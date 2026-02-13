@@ -1,0 +1,123 @@
+{
+  "kind": "build_request",
+  "title": "Front-end draft UI for student exam registration with multiple sleek theme versions",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a concise front-end draft (no backend integration) for a student exam registration website with a minimal number of screens and clear user flow: Landing/Start, Exam Selection, Registration Details, Review, and Confirmation.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "I need a website that is mean't for students to register for exams.",
+          "BUT ONLY CREATE THE FRONT-END I dont need a fully working website, just a draft."
+        ]
+      },
+      "acceptanceCriteria": [
+        "App can be run as a static front-end with no required backend calls.",
+        "User can navigate through a complete exam-registration flow: start -> select exam -> enter details -> review -> confirmation.",
+        "All data is mocked/held in client state only and resets on refresh."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement multiple design variations and a way to preview/switch them in the UI: (1) at least one dark-only theme and (2) at least one theme that demonstrates color theory (intentional complementary/analogous palette) while keeping the layout concise, straight to the point, and sleek.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "It needs to be concise, straight to the point, and sleek, I would like to see different versions. Some with only dark colors, some with color theory at work."
+        ]
+      },
+      "acceptanceCriteria": [
+        "There are at least 2 distinct visual theme variants available (>=1 dark-only and >=1 color-theory-based).",
+        "Theme switching/preview is possible without rebuilding the app (e.g., toggle/selector in UI).",
+        "Typography, spacing, and component styling remain consistently sleek and minimal across variants."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Design the exam registration form UI with realistic fields and client-side validation only (no persistence): student name, student ID, email, exam selection, date/time (or session), accommodations (optional), and agreement checkbox; include clear inline validation and a disabled/enabled submit state.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "students to register for exams"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Form contains the specified fields with sensible input types (e.g., email input).",
+        "Client-side validation errors are shown inline and are understandable in English.",
+        "The primary action button reflects validity (disabled until required fields are valid or equivalent clear behavior)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Provide a coherent, distinct visual direction for the app (layout grid, typography scale, spacing system, and component hierarchy) and apply it consistently across all screens, avoiding overly decorative elements.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "concise, straight to the point, and sleek"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Screens share a consistent layout structure (header/content/actions) and spacing scale.",
+        "Primary/secondary actions are visually clear and consistent across screens.",
+        "UI remains uncluttered with a clear information hierarchy on each screen."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Ensure the UI is responsive and accessible for a draft: usable on mobile and desktop, keyboard navigable for core flow, and with sufficient contrast in each theme variant.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "sleek"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Core flow is usable at common widths (mobile and desktop) without broken layout.",
+        "Interactive elements can be reached/activated via keyboard navigation for the primary flow.",
+        "Text and interactive elements have acceptable contrast in both dark-only and color-theory themes."
+      ]
+    }
+  ],
+  "constraints": [
+    "Front-end only: do not build or require a working backend, persistence, or real exam data.",
+    "Do not modify any files under the immutable paths listed in SYSTEM_CONTEXT (compose existing UI components instead).",
+    "Use English for all user-facing text."
+  ],
+  "nonGoals": [
+    "Internet Identity authentication or any login system.",
+    "Storing registrations on-chain or in any database/canister state.",
+    "Admin dashboards, exam management CRUD, or real payment flows.",
+    "Email/SMS notifications or integrations with external services."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

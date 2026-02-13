@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Front-end only draft for a concise, sleek student exam registration website with multiple visual design variations (dark themes and color-theory-based versions).",
+  "architectural_notes": [
+    "Front-end only UI draft; no backend functionality required.",
+    "Provide multiple visual design variations (dark-only themes and color-theory-based themes)."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-concise-front-end-draft-no-backend-integration-for-a-student-exam-registration-website-with-a-minimal-number-of-screens-and-clear-user-flow-landing-start-exam-selection-registration-details-review-and-confirmation",
+      "title": "Create a concise front-end draft (no backend integration) for a student exam registration website with a minimal number of screens and clear user flow: Landing/Start, Exam Selection, Registration Details, Review, and Confirmation.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-multiple-design-variations-and-a-way-to-preview-switch-them-in-the-ui-1-at-least-one-dark-only-theme-and-2-at-least-one-theme-that-demonstrates-color-theory-intentional-complementary-analogous-palette-while-keeping-the-layout-concise-straight-to-the-point-and-sleek",
+      "title": "Implement multiple design variations and a way to preview/switch them in the UI: (1) at least one dark-only theme and (2) at least one theme that demonstrates color theory (intentional complementary/analogous palette) while keeping the layout concise, straight to the point, and sleek.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-the-exam-registration-form-ui-with-realistic-fields-and-client-side-validation-only-no-persistence-student-name-student-id-email-exam-selection-date-time-or-session-accommodations-optional-and-agreement-checkbox-include-clear-inline-validation-and-a-disabled-enabled-submit-state",
+      "title": "Design the exam registration form UI with realistic fields and client-side validation only (no persistence): student name, student ID, email, exam selection, date/time (or session), accommodations (optional), and agreement checkbox; include clear inline validation and a disabled/enabled submit state.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-coherent-distinct-visual-direction-for-the-app-layout-grid-typography-scale-spacing-system-and-component-hierarchy-and-apply-it-consistently-across-all-screens-avoiding-overly-decorative-elements",
+      "title": "Provide a coherent, distinct visual direction for the app (layout grid, typography scale, spacing system, and component hierarchy) and apply it consistently across all screens, avoiding overly decorative elements.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-ui-is-responsive-and-accessible-for-a-draft-usable-on-mobile-and-desktop-keyboard-navigable-for-core-flow-and-with-sufficient-contrast-in-each-theme-variant",
+      "title": "Ensure the UI is responsive and accessible for a draft: usable on mobile and desktop, keyboard navigable for core flow, and with sufficient contrast in each theme variant.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create front-end draft UI for a student exam registration website (no backend), concise and sleek, with multiple design variations including dark-only themes and color-theory-based themes.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Front-end draft UI for student exam registration with multiple sleek theme versions",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

@@ -1,0 +1,197 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Draft exam registration UI with multi-theme preview (frontend-only)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a frontend-only, mocked multi-step exam registration flow with the required minimal screens and navigation.",
+      "acceptanceCriteria": [
+        "App can be run as a static front-end with no required backend calls.",
+        "User can navigate through a complete exam-registration flow: start -> select exam -> enter details -> review -> confirmation.",
+        "All data is mocked/held in client state only and resets on refresh."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the app shell that hosts the registration flow, including shared layout (header/content/actions) and client-only state wiring for the flow screens (no backend usage). Use shadcn-ui components (e.g., Button/Card) to keep the UI concise and consistent. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/registration/RegistrationFlow.tsx",
+          "operation": "create",
+          "description": "Implement the flow controller (step state machine) and in-memory draft registration state; provide handlers to move forward/back and reset on completion (refresh resets by default)."
+        },
+        {
+          "path": "frontend/src/pages/LandingStart.tsx",
+          "operation": "create",
+          "description": "Create the Landing/Start screen with brief copy and a single primary action to begin registration. Use shadcn-ui Button/Card to present a sleek start state. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ExamSelection.tsx",
+          "operation": "create",
+          "description": "Create the Exam Selection screen using mocked exam options and a clear primary action to proceed. Use shadcn-ui Select and Card to keep interaction minimal and readable. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/RegistrationDetails.tsx",
+          "operation": "create",
+          "description": "Create the Registration Details screen that hosts the form fields (wired to client state only) and supports back/next navigation. Use shadcn-ui form primitives (Input/Label/Checkbox) for consistency. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/Review.tsx",
+          "operation": "create",
+          "description": "Create the Review screen that summarizes the entered data (read-only) with clear primary (confirm) and secondary (edit/back) actions. Use shadcn-ui Card/Button for consistent hierarchy. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/Confirmation.tsx",
+          "operation": "create",
+          "description": "Create the Confirmation screen with a concise success message and a single action to start over (reset client state). Use shadcn-ui Card/Button to keep it sleek. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Ensure the React entry point renders the new App and remains frontend-only (no required backend calls); keep providers but avoid introducing authentication flows."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add at least two sleek theme variants (dark-only + color-theory palette) and an in-UI theme switcher without rebuild.",
+      "acceptanceCriteria": [
+        "There are at least 2 distinct visual theme variants available (>=1 dark-only and >=1 color-theory-based).",
+        "Theme switching/preview is possible without rebuilding the app (e.g., toggle/selector in UI).",
+        "Typography, spacing, and component styling remain consistently sleek and minimal across variants."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/theme/themes.ts",
+          "operation": "create",
+          "description": "Define at least two theme variants (1 dark-only, 1 complementary/analogous palette) expressed as design tokens mapped to CSS variables compatible with the Tailwind/shadcn-ui token approach."
+        },
+        {
+          "path": "frontend/src/theme/ThemeProvider.tsx",
+          "operation": "create",
+          "description": "Create a lightweight ThemeProvider to store the selected theme in client state and apply it to the document (e.g., data attribute/class) so switching is instant and requires no rebuild."
+        },
+        {
+          "path": "frontend/src/components/ThemeSwitcher.tsx",
+          "operation": "create",
+          "description": "Add a compact theme selector UI (e.g., dropdown/segmented control) to preview/switch themes. Use shadcn-ui Select/Button for a sleek control. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add global CSS variables for the two theme variants (including dark-only) and base typography/spacing defaults; ensure tokens align with the Tailwind config variables so shadcn-ui components automatically adapt. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire ThemeProvider and ThemeSwitcher into the app header so users can switch themes anywhere in the flow; ensure the layout stays concise and consistent across themes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Create a realistic registration form UI with client-side validation, inline errors, and validity-based primary action behavior.",
+      "acceptanceCriteria": [
+        "Form contains the specified fields with sensible input types (e.g., email input).",
+        "Client-side validation errors are shown inline and are understandable in English.",
+        "The primary action button reflects validity (disabled until required fields are valid or equivalent clear behavior)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/registration/validation.ts",
+          "operation": "create",
+          "description": "Implement client-side validation helpers for required fields and formats (student name, student ID, email, exam, session/date-time, agreement) and optional accommodations; return field-level error messages for inline display."
+        },
+        {
+          "path": "frontend/src/features/registration/types.ts",
+          "operation": "create",
+          "description": "Define client-only types for the registration draft data used across screens (no persistence)."
+        },
+        {
+          "path": "frontend/src/pages/RegistrationDetails.tsx",
+          "operation": "modify",
+          "description": "Implement the full form UI: student name, student ID, email, exam selection (or linked from Exam Selection), date/time/session selection, optional accommodations, and agreement checkbox; show inline validation messages and disable/enable the primary action based on validity. Use shadcn-ui Input/Label/Checkbox/Select/Button to keep styling sleek. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ExamSelection.tsx",
+          "operation": "modify",
+          "description": "Ensure exam selection is represented in client state and validated as required before proceeding; use shadcn-ui Select to keep interaction consistent. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/Review.tsx",
+          "operation": "modify",
+          "description": "Display all captured fields in a readable summary and prevent confirmation if required items are missing; keep confirmation action clearly primary and consistent with the disabled/enabled behavior."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Establish and apply a consistent, uncluttered visual system (layout grid, typography, spacing, hierarchy) across all screens.",
+      "acceptanceCriteria": [
+        "Screens share a consistent layout structure (header/content/actions) and spacing scale.",
+        "Primary/secondary actions are visually clear and consistent across screens.",
+        "UI remains uncluttered with a clear information hierarchy on each screen."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/AppShell.tsx",
+          "operation": "create",
+          "description": "Create a reusable layout wrapper enforcing a consistent structure (header, main content container, footer/actions area) and a shared spacing/typography scale across screens."
+        },
+        {
+          "path": "frontend/src/components/registration/StepHeader.tsx",
+          "operation": "create",
+          "description": "Add a minimal step indicator/header component to reinforce hierarchy and flow position without decorative clutter; use shadcn-ui typography/card styling conventions where appropriate. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Adopt AppShell and StepHeader so every screen uses the same layout grid, typography, and action placement; ensure primary/secondary action styling is consistent (e.g., primary filled button, secondary ghost/outline). Use shadcn-ui Button variants. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define global base styles for typography scale, focus ring, and spacing rhythm (kept minimal) and ensure they apply consistently across all screens and theme variants."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Make the draft UI responsive and accessible: mobile/desktop usability, keyboard navigation for the core flow, and sufficient contrast per theme.",
+      "acceptanceCriteria": [
+        "Core flow is usable at common widths (mobile and desktop) without broken layout.",
+        "Interactive elements can be reached/activated via keyboard navigation for the primary flow.",
+        "Text and interactive elements have acceptable contrast in both dark-only and color-theory themes."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/AppShell.tsx",
+          "operation": "modify",
+          "description": "Ensure responsive container sizing and spacing for mobile/desktop, including stacking actions on small screens and maintaining readable line-length on large screens."
+        },
+        {
+          "path": "frontend/src/pages/RegistrationDetails.tsx",
+          "operation": "modify",
+          "description": "Improve accessibility: proper label associations, aria attributes for inline errors, logical tab order, and keyboard-operable controls; ensure disabled state is communicated clearly and focus styles are visible. Use shadcn-ui inputs/checkbox/select for consistent accessible behavior. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ExamSelection.tsx",
+          "operation": "modify",
+          "description": "Ensure selection controls are keyboard navigable and readable at mobile widths; maintain clear focus states. Use shadcn-ui Select/Button. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/Review.tsx",
+          "operation": "modify",
+          "description": "Ensure review content uses semantic structure (headings/definition-like layout) and that primary/secondary actions are reachable and clear via keyboard."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Adjust theme token values as needed to ensure sufficient contrast (text, borders, focus rings) in both the dark-only and color-theory theme variants; ensure a clear visible focus indicator across themes."
+        }
+      ]
+    }
+  ]
+}

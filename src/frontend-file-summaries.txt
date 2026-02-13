@@ -1,0 +1,18 @@
+{
+  "frontend/src/App.tsx": "Main application component that wraps the registration flow with ThemeProvider, includes header with theme switcher and footer with attribution.",
+  "frontend/src/features/registration/RegistrationFlow.tsx": "State machine controller managing the multi-step registration flow (start, exam selection, details, review, confirmation) with client-side state.",
+  "frontend/src/features/registration/types.ts": "TypeScript interfaces defining the registration data structure and validation error types.",
+  "frontend/src/features/registration/validation.ts": "Client-side validation functions for registration form fields with inline error messages.",
+  "frontend/src/pages/LandingStart.tsx": "Landing page component with welcome message and process overview, initiates the registration flow.",
+  "frontend/src/pages/ExamSelection.tsx": "Exam selection screen displaying mock exam options with radio-style selection cards.",
+  "frontend/src/pages/RegistrationDetails.tsx": "Registration form with student details, exam session selection, accommodations, and terms agreement with inline validation.",
+  "frontend/src/pages/Review.tsx": "Review screen displaying all entered registration data in a read-only summary before final confirmation.",
+  "frontend/src/pages/Confirmation.tsx": "Success confirmation screen shown after registration completion with next steps information.",
+  "frontend/src/components/layout/AppShell.tsx": "Reusable layout wrapper component providing consistent container structure across all screens.",
+  "frontend/src/components/registration/StepHeader.tsx": "Step indicator component showing progress through the registration flow with visual step markers.",
+  "frontend/src/theme/themes.ts": "Theme definitions including Default, Midnight (dark), Ocean (blue), Sunset (warm complementary), and Forest (green) with OKLCH color tokens.",
+  "frontend/src/theme/ThemeProvider.tsx": "React context provider managing theme selection and light/dark mode with localStorage persistence.",
+  "frontend/src/components/ThemeSwitcher.tsx": "UI component with dropdown menu for theme selection and button for light/dark mode toggle.",
+  "frontend/src/index.css": "Global styles with OKLCH color system variables, typography defaults, and base styling for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with extended color tokens, typography, spacing, and animation utilities."
+}

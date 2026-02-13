@@ -1,0 +1,84 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-13T06:52:35.658Z",
+  "summary": "Diff implements a multi-step exam registration UI with mocked data and client-side validation, plus theme switching. However, it also introduces backend/auth-related code (Internet Identity, actor hooks, backend canister) that conflicts with the front-end-only / no-login non-goals, and it does not clearly provide a dark-only theme variant.",
+  "missing_requirements": [
+    {
+      "id": "REQ-2",
+      "requirement": "Provide at least one dark-only theme variant (in addition to a color-theory-based theme) and allow switching in the UI without rebuilding.",
+      "reason": "Theme switching is implemented, but the provided themes shown (e.g., \"default\", \"midnight\") each define both light and dark palettes; the diff does not show any theme that is dark-only (i.e., intentionally no light mode).",
+      "evidence": [
+        "frontend/src/theme/themes.ts",
+        "frontend/src/components/ThemeSwitcher.tsx",
+        "frontend/src/theme/ThemeProvider.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Backend canister stub added despite \"Front-end only\" constraint.",
+      "reason": "BuildRequest explicitly requests a front-end draft UI with no backend integration; a Motoko backend actor file was added.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Internet Identity authentication plumbing (provider/hook) added, despite explicit non-goal of any login system / Internet Identity auth.",
+      "reason": "BuildRequest non-goals include Internet Identity authentication or any login system, but the app root is wrapped with an InternetIdentityProvider and related auth code is added.",
+      "evidence": [
+        "frontend/src/main.tsx",
+        "frontend/src/hooks/useInternetIdentity.ts"
+      ]
+    },
+    {
+      "description": "Actor / backend interface integration hook added (react-query + createActorWithConfig), implying backend calls.",
+      "reason": "BuildRequest requires the app to run as static front-end with no required backend calls; useActor sets up an actor and invalidates/refetches queries based on identity.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "Confirmation screen claims a confirmation email will be sent.",
+      "reason": "BuildRequest non-goals include Email/SMS notifications or integrations with external services; the UI text promises an email.",
+      "evidence": [
+        "frontend/src/pages/Confirmation.tsx"
+      ]
+    },
+    {
+      "description": "External promotional footer link to caffeine.ai added.",
+      "reason": "Not requested by any requirement; introduces an external outbound link and tracking parameters.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/ThemeSwitcher.tsx",
+    "frontend/src/components/layout/AppShell.tsx",
+    "frontend/src/components/registration/StepHeader.tsx",
+    "frontend/src/features/registration/RegistrationFlow.tsx",
+    "frontend/src/features/registration/types.ts",
+    "frontend/src/features/registration/validation.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/Confirmation.tsx",
+    "frontend/src/pages/ExamSelection.tsx",
+    "frontend/src/pages/LandingStart.tsx",
+    "frontend/src/pages/RegistrationDetails.tsx",
+    "frontend/src/pages/Review.tsx",
+    "frontend/src/theme/ThemeProvider.tsx",
+    "frontend/src/theme/themes.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}
